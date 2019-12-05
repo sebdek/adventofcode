@@ -28,7 +28,7 @@ public class Day2Test1 {
         }
     }
 
-    private static List<Integer> processOpcodeFragment(List<Integer> intcodeList, List<Integer> opcodeFragment) {
+    protected static List<Integer> processOpcodeFragment(List<Integer> intcodeList, List<Integer> opcodeFragment) {
         int opcode = opcodeFragment.get(0);
         int result = 0;
         switch (opcode) {
