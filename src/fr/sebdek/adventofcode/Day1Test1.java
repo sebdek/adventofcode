@@ -18,7 +18,7 @@ public class Day1Test1 {
         }
     }
 
-    private static int calculateFuelRequirementForMass(int masse) {
+    protected static int calculateFuelRequirementForMass(int masse) {
         return Math.floorDiv(masse, 3) - 2;
     }
 }

@@ -20,15 +20,12 @@ public class Day1Test2 {
 
     private static int calculateAdjustedFuelRequirementForMass(int masse) {
         int total = 0;
-        int requiredFuel = calculateFuelRequirementForMass(masse);
+        int requiredFuel = Day1Test1.calculateFuelRequirementForMass(masse);
         while (requiredFuel > 0) {
             total += requiredFuel;
-            requiredFuel = calculateFuelRequirementForMass(requiredFuel);
+            requiredFuel = Day1Test1.calculateFuelRequirementForMass(requiredFuel);
         }
         return total;
     }
 
-    private static int calculateFuelRequirementForMass(int masse) {
-        return Math.floorDiv(masse, 3) - 2;
-    }
 }
