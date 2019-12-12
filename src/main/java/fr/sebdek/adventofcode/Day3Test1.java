@@ -103,6 +103,7 @@ public class Day3Test1 {
         int x;
         int y;
         int distance;
+        int step;
 
         public int getX() {
             return x;
@@ -116,6 +117,14 @@ public class Day3Test1 {
             return distance;
         }
 
+        public int getStep() {
+            return step;
+        }
+
+        public void setStep(int step) {
+            this.step = step;
+        }
+
         public Position(Position previousPosition, Movement movement) {
             if (previousPosition == null) {
                 if ("R".equals(movement.getDirection())) {
@@ -126,6 +135,7 @@ public class Day3Test1 {
                     this.y = movement.getValue();
                 }
                 this.distance = Math.abs(x) +  Math.abs(y);
+                this.step = 1;
             } else {
                 if ("R".equals(movement.getDirection())) {
                     this.x = previousPosition.getX() + movement.getValue();
@@ -135,6 +145,7 @@ public class Day3Test1 {
                     this.y = previousPosition.getY() + movement.getValue();
                 }
                 this.distance = Math.abs(x) +  Math.abs(y);
+                this.step = previousPosition.getStep() + 1;
             }
         }
 
@@ -154,7 +165,7 @@ public class Day3Test1 {
 
         @Override
         public String toString() {
-            return "position : x=" + x + ", y=" + y + ", distance=" + distance;
+            return "position : x=" + x + ", y=" + y + ", distance=" + distance + ", step=" + step;
         }
     }
 
@@ -166,7 +177,7 @@ public class Day3Test1 {
                 .collect(Collectors.groupingBy(Position::getDistance));
     }
 
-    private static List<Position> generatePositionsFromMovement(AtomicReference<Position> previousPosition, Movement movement) {
+    public static List<Position> generatePositionsFromMovement(AtomicReference<Position> previousPosition, Movement movement) {
         List<Position> positions = new ArrayList<>();
         int absoluteValue = Math.abs(movement.getValue());
         for (int i = 0; i < absoluteValue; i++) {
