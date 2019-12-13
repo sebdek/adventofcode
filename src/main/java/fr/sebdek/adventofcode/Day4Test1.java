@@ -21,12 +21,12 @@ public class Day4Test1 {
     public static boolean matchCriteria(int number) {
 
         //one double present && all increase
-        int donePart = Math.floorDiv(number, 100000);
+        int donePart = Math.floorDiv(number, (int) Math.pow(10, 5));
         int previousInt = donePart;
         boolean doublePresent = false;
         boolean allIncrease = true;
-        for (int j = 10000; j >= 1; j = j / 10) {
-            int currentInt = Math.floorDiv(number, j) - donePart *10;
+        for (int j = 4; j >= 1; j --) {
+            int currentInt = Math.floorDiv(number, (int) Math.pow(10, j)) - donePart *10;
             if (currentInt == previousInt) {
                 doublePresent = true;
             }
